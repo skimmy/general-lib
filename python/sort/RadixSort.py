@@ -14,16 +14,32 @@ def insertionSortInt(toSort, numberMask=0xFFFFFFFF):
     return toSort
 
 def bucketSort(toSort):
-    sortedOut = []
-    return sortedOut
-
-def radixSort(toSort, nbuckets=16):
-    sortedOut = []
-    groupBitsCount = math.log(nbuckets, 2)
-    for i in range(nbuckets):
+    n = len(toSort)
+    B = [[]] * n
+    for i in range(n):
         pass
-    return sortedOut
+#        (B[]).append(toSort[i])
+    return toSort
+
+def radixSortHex(toSort, D=8):
+    nbucket = 16
+    n = len(toSort)
+    B = [[]]*nbucket
+    for d in range(D):
+        shift = d * 4
+        mask = (0xF << shift)
+#        print "%d %X" % (shift,mask)
+        for i in range(n):            
+            b = (toSort[i] & mask) >> shift # bucket_of(toSort[i])
+            print "%s, %d" % ("{0:b}".format(toSort[i]), b)
+            B[b].append(toSort[i])
+        toSort = []
+        for j in range(nbucket):
+            toSort.extend(B[j])
+            B[j] = []
+    return toSort
 
 if __name__ == "__main__":
     print("[DEMO] - RadixSort.py")
     print(insertionSortInt([4, 5, 3, 16]))
+    print(radixSortHex([1,2,100,-34,40, 127,3]))
