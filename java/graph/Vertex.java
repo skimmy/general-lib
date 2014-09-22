@@ -2,7 +2,7 @@ package graph;
 
 import java.util.List;
 
-public interface Vertex {
-	public Object getContent();
-	public List<Vertex> getNeighbours();
+public interface Vertex<T> {
+	public T getContent();
+	public List<Vertex<T>> getNeighbours();
 }

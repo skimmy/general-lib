@@ -2,7 +2,7 @@ package graph;
 
 import java.util.Set;
 
-public interface Graph {
-	public Set<Vertex> getVertices();
-	public void addVertex(Vertex newVertex);
+public interface Graph<T> {
+	public Set<Vertex<T>> getVertices();
+	public void addVertex(Vertex<T> newVertex);
 }
