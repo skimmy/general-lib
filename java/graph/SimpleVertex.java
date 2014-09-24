@@ -1,13 +1,16 @@
 package graph;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class SimpleVertex<T> implements Vertex<T> {
 
     private T content;
+    private LinkedList<Vertex<T>> neighbours;
 
     public SimpleVertex(T content) {
         this.content = content;
+        this.neighbours = new LinkedList<Vertex<T>>();
     }
 
     @Override
@@ -17,6 +20,24 @@ public class SimpleVertex<T> implements Vertex<T> {
 
     @Override
     public List<Vertex<T>> getNeighbours() {
-        return null;
+        return this.neighbours;
+    }
+
+    @Override
+    public void addNeighbour(Vertex<T> v) {
+        this.neighbours.add(v);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Vertex) {
+            return ((Vertex) obj).getContent().equals(this.content);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return content.hashCode();
     }
 }
