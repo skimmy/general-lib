@@ -1,5 +1,6 @@
 package graph;
 
+import graph.adt.LinkedVertex;
 import graph.adt.Vertex;
 
 import java.util.HashSet;
@@ -11,10 +12,10 @@ import java.util.Set;
  */
 public class LinkedListGraph<T> extends AbstractGraph<T> {
 
-    private LinkedList<Vertex<T>> vertices = null;
+    private LinkedList<LinkedVertex<T>> vertices = null;
 
     public LinkedListGraph() {
-        this.vertices = new LinkedList<Vertex<T>>();
+        this.vertices = new LinkedList<LinkedVertex<T>>();
     }
 
     @Override
@@ -23,10 +24,26 @@ public class LinkedListGraph<T> extends AbstractGraph<T> {
     }
 
     @Override
-    public void addVertex(Vertex<T> newVertex) {
-        if (!this.vertices.contains(newVertex)) {
-            this.vertices.add(newVertex);
+    public boolean addVertex(Vertex<T> newVertex) {
+        // check if the vertex already exists
+        LinkedVertex<T> vertex = new SimpleLinkedVertex<T>(newVertex.getContent());
+        if (this.vertices.contains(vertex)) {
+            return false;
         }
+        // add a new vertex and return
+        this.vertices.add(vertex);
+        return true;
+    }
+
+    @Override
+    public boolean addEdge(Vertex<T> from, Vertex<T> to) {
+        // check if the vertex exist and possibly insert them
+
+
+        // check if the edge already exist
+
+        // insert the edge and return the proper value
+        return false;
     }
 
 

@@ -1,7 +1,7 @@
 package main;
 
 import graph.LinkedListGraph;
-import graph.SimpleVertex;
+import graph.SimpleLinkedVertex;
 import graph.adt.Vertex;
 
 /**
@@ -12,14 +12,14 @@ public class GraphTesting {
         // Vertex testing
         System.out.println();
         System.out.println("- Vertex testing" );
-        SimpleVertex<String> vertex = new SimpleVertex<String>("Hello");
+        SimpleLinkedVertex<String> vertex = new SimpleLinkedVertex<String>("Hello");
         System.out.println(vertex.getContent());
-        SimpleVertex<String> world = new SimpleVertex<String>("World!");
+        SimpleLinkedVertex<String> world = new SimpleLinkedVertex<String>("World!");
         vertex.addNeighbour(world);
         for (Vertex<String> v : vertex.getNeighbours()) {
             System.out.println(" " + v.getContent());
         }
-        SimpleVertex<String> clone = new SimpleVertex<String>("Hello");
+        SimpleLinkedVertex<String> clone = new SimpleLinkedVertex<String>("Hello");
         String eq = (clone.equals(vertex)) ? "equals" : "not equals";
         System.out.println("vertex (" + vertex.hashCode() + ") and clone (" +
                 clone.hashCode() + ") are " + eq);

@@ -1,23 +1,20 @@
 package graph;
 
+import graph.adt.LinkedVertex;
+import graph.adt.SimpleVertex;
 import graph.adt.Vertex;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class SimpleVertex<T> implements Vertex<T> {
+public class SimpleLinkedVertex<T> extends SimpleVertex<T> implements LinkedVertex<T> {
 
-    private T content;
+
     private LinkedList<Vertex<T>> neighbours;
 
-    public SimpleVertex(T content) {
-        this.content = content;
+    public SimpleLinkedVertex(T content) {
+        super(content);
         this.neighbours = new LinkedList<Vertex<T>>();
-    }
-
-    @Override
-    public T getContent() {
-        return this.content;
     }
 
     @Override
@@ -32,23 +29,10 @@ public class SimpleVertex<T> implements Vertex<T> {
 
     @Override
     public String toString() {
-        String str = this.content.toString() + " --> ";
+        String str = super.toString() + " --> ";
         for (Vertex<T> vertex : this.neighbours) {
             str += vertex.getContent().toString() + " -- ";
         }
         return str;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if(obj instanceof Vertex) {
-            return ((Vertex) obj).getContent().equals(this.content);
-        }
-        return false;
-    }
-
-    @Override
-    public int hashCode() {
-        return content.hashCode();
     }
 }
