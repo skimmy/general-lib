@@ -1,5 +1,7 @@
 package graph;
 
+import graph.adt.Vertex;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,6 +28,15 @@ public class SimpleVertex<T> implements Vertex<T> {
     @Override
     public void addNeighbour(Vertex<T> v) {
         this.neighbours.add(v);
+    }
+
+    @Override
+    public String toString() {
+        String str = this.content.toString() + " --> ";
+        for (Vertex<T> vertex : this.neighbours) {
+            str += vertex.getContent().toString() + " -- ";
+        }
+        return str;
     }
 
     @Override

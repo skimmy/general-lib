@@ -1,7 +1,8 @@
 package main;
 
+import graph.LinkedListGraph;
 import graph.SimpleVertex;
-import graph.Vertex;
+import graph.adt.Vertex;
 
 /**
  * Created by michele.schimd on 22/09/2014.
@@ -23,5 +24,12 @@ public class GraphTesting {
         System.out.println("vertex (" + vertex.hashCode() + ") and clone (" +
                 clone.hashCode() + ") are " + eq);
         System.out.println();
+
+        // LinkedListGraph testing
+        System.out.println("- LinkedListGraph testing");
+        LinkedListGraph<String> llGraph = new LinkedListGraph<String>();
+        llGraph.addVertex(world);
+        System.out.println(llGraph.toString());
+
     }
 }
