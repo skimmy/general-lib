@@ -2,6 +2,7 @@ package main;
 
 import graph.LinkedListGraph;
 import graph.SimpleLinkedVertex;
+import graph.adt.SimpleVertex;
 import graph.adt.Vertex;
 
 /**
@@ -29,6 +30,12 @@ public class GraphTesting {
         System.out.println("- LinkedListGraph testing");
         LinkedListGraph<String> llGraph = new LinkedListGraph<String>();
         llGraph.addVertex(world);
+        llGraph.addVertex(new SimpleVertex<String>("Mars"));
+        llGraph.addEdge(world, new SimpleVertex<String>("Moon"));
+        llGraph.addEdge(new SimpleVertex<String>("Jupiter"), new SimpleVertex<String>("Europa"));
+        llGraph.addEdge(new SimpleVertex<String>("Jupiter"), new SimpleVertex<String>("Europa"));
+        llGraph.addEdge(new SimpleVertex<String>("Jupiter"), new SimpleVertex<String>("Callisto"));
+
         System.out.println(llGraph.toString());
 
     }

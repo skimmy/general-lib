@@ -23,8 +23,12 @@ public class SimpleLinkedVertex<T> extends SimpleVertex<T> implements LinkedVert
     }
 
     @Override
-    public void addNeighbour(Vertex<T> v) {
+    public boolean addNeighbour(Vertex<T> v) {
+        if (this.neighbours.contains(v)) {
+            return false;
+        }
         this.neighbours.add(v);
+        return true;
     }
 
     @Override

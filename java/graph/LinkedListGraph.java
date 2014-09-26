@@ -5,6 +5,7 @@ import graph.adt.Vertex;
 
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -38,12 +39,26 @@ public class LinkedListGraph<T> extends AbstractGraph<T> {
     @Override
     public boolean addEdge(Vertex<T> from, Vertex<T> to) {
         // check if the vertex exist and possibly insert them
+        SimpleLinkedVertex<T> vFrom = new SimpleLinkedVertex<T>(from.getContent());
+        SimpleLinkedVertex<T> vTo = new SimpleLinkedVertex<T>(to.getContent());
+        // check the node list for the nodes at the end of the new edge, if they
+        // are not in the graph inserted tehm
+        int fromPos = this.vertices.indexOf(vFrom);
+        vFrom = (fromPos >= 0) ? (SimpleLinkedVertex<T>) this.vertices.get(fromPos) : vFrom;
+        if (fromPos < 0) {
+            this.vertices.add(vFrom);
+        }
+        int toPos = this.vertices.indexOf(vTo);
+        vTo = (toPos >= 0) ? (SimpleLinkedVertex<T>) this.vertices.get(toPos) : vTo;
+        if (toPos < 0) {
+            this.vertices.add(vTo);
+        }
+        // we need now to create the edge and inserting it into the structure by
+        // connecting the two nodes with each other (i.e. undirected graph)
+        boolean fromTo = vFrom.addNeighbour(vTo);
+        boolean toFrom = vTo.addNeighbour(vFrom);
 
-
-        // check if the edge already exist
-
-        // insert the edge and return the proper value
-        return false;
+        return (fromTo && toFrom);
     }
 
 
