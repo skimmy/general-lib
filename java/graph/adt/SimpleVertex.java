@@ -1,18 +1,14 @@
 package graph.adt;
 
+import common.containers.AbstractContentHolder;
+
 /**
  * Created by michele.schimd on 24/09/2014.
  */
-public class SimpleVertex<T> implements Vertex<T> {
-    private T content;
+public class SimpleVertex<T> extends AbstractContentHolder<T> implements Vertex<T> {
 
     public SimpleVertex(T content) {
-        this.content = content;
-    }
-
-    @Override
-    public T getContent() {
-        return this.content;
+        super(content);
     }
 
     @Override
@@ -28,8 +24,4 @@ public class SimpleVertex<T> implements Vertex<T> {
         return false;
     }
 
-    @Override
-    public int hashCode() {
-        return content.hashCode();
-    }
 }

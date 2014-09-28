@@ -1,13 +1,7 @@
 package graph.adt;
 
-import java.util.List;
+import common.containers.ContentHolder;
 
-public interface Vertex<T> {
-    /**
-     * Returns the actual content of the vertex
-     *
-     * @return the content of the vertex
-     */
-	public T getContent();
+public interface Vertex<T> extends ContentHolder<T> {
 
 }

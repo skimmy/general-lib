@@ -35,6 +35,10 @@ public class GraphTesting {
         llGraph.addEdge(new SimpleVertex<String>("Jupiter"), new SimpleVertex<String>("Europa"));
         llGraph.addEdge(new SimpleVertex<String>("Jupiter"), new SimpleVertex<String>("Europa"));
         llGraph.addEdge(new SimpleVertex<String>("Jupiter"), new SimpleVertex<String>("Callisto"));
+        // tests for addVertex and addEdge methods
+        llGraph.addVertex(new SimpleLinkedVertex<String>("Ganymede"));
+        llGraph.addEdge(new SimpleLinkedVertex<String>("Jupiter"), new SimpleLinkedVertex<String>("Ganymede"));
+
 
         System.out.println(llGraph.toString());
 
