@@ -57,9 +57,61 @@ public class LinkedListGraph<T> extends AbstractGraph<T> {
         // connecting the two nodes with each other (i.e. undirected graph)
         boolean fromTo = vFrom.addNeighbour(vTo);
         boolean toFrom = vTo.addNeighbour(vFrom);
-
         return (fromTo && toFrom);
     }
 
+    @Override
+    public List<Vertex<T>> incidentVertices(T key) {
+        // create a vertex for the key object and retrieve the proper one from
+        // the vertices list (possibly null)
+        SimpleLinkedVertex<T> vertex = new SimpleLinkedVertex<T>(key);
+        int i = this.vertices.indexOf(vertex);
+        if (i < 0) {
+            // no element found, throw an exception
+            throw new IllegalArgumentException("No vertex found for key "
+                    + key.toString());
+        }
+        // retrieve the queried vertex and the return its neighbours list
+        vertex = (SimpleLinkedVertex<T>) vertices.get(i);
+        return vertex.getNeighbours();
+    }
 
+    @Override
+    public Vertex<T> removeVertex(Vertex<T> toRemove) {
+        // retrieve the vertex from the list
+        SimpleLinkedVertex<T> vertex = new SimpleLinkedVertex<T>(toRemove.getContent());
+        int i = this.vertices.indexOf(vertex);
+        if (i < 0) {
+            return null;
+        }
+        vertex = (SimpleLinkedVertex<T>) this.vertices.get(i);
+        // remove the vertex and all its neighbours
+        this.vertices.remove(vertex);
+        for (Vertex<T> v : vertex.getNeighbours()) {
+            ((LinkedVertex<T>) v).removeNeighbour(vertex);
+        }
+        // finally return the vertex
+        return vertex;
+    }
+
+    @Override
+    public boolean removeEdge(Vertex<T> v, Vertex<T> w) {
+        // TODO: implement method
+        // retrieves the two vertices
+        int i = this.vertices.indexOf(v);
+        LinkedVertex<T> vv = (i < 0) ? null : this.vertices.get(i);
+        i = this.vertices.indexOf(w);
+        LinkedVertex<T> ww = (i < 0) ? null : this.vertices.get(i);
+        // one or both vertices not present in the list of vertices
+        if (vv == null || ww == null) {
+            return false;
+        }
+        // check if the edge exists and (possibly) remove it
+        if (vv.hasNeighbour(ww)) {
+            vv.removeNeighbour(ww);
+            ww.removeNeighbour(vv);
+            return true;
+        }
+        return false;
+    }
 }

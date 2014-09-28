@@ -38,8 +38,9 @@ public class GraphTesting {
         // tests for addVertex and addEdge methods
         llGraph.addVertex(new SimpleLinkedVertex<String>("Ganymede"));
         llGraph.addEdge(new SimpleLinkedVertex<String>("Jupiter"), new SimpleLinkedVertex<String>("Ganymede"));
-
-
+        System.out.println(llGraph.toString());
+        llGraph.removeVertex(new SimpleVertex<String>("Moon"));
+        llGraph.removeEdge(new SimpleVertex<String>("Jupiter"), new SimpleVertex<String>("Europa"));
         System.out.println(llGraph.toString());
 
     }

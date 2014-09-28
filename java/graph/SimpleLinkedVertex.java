@@ -39,4 +39,14 @@ public class SimpleLinkedVertex<T> extends SimpleVertex<T> implements LinkedVert
         }
         return str;
     }
+
+    @Override
+    public boolean removeNeighbour(Vertex<T> v) {
+        return this.neighbours.remove(v);
+    }
+
+    @Override
+    public boolean hasNeighbour(Vertex<T> v) {
+        return this.neighbours.contains(v);
+    }
 }
