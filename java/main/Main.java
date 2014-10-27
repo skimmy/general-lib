@@ -6,7 +6,10 @@ package main;
 public class Main {
     public static void main(String[] args) {
         System.out.println("---- GRAPH TESTING ----");
-        GraphTesting.generalGraphTesting();
+        main.GraphTesting.generalGraphTesting();
+
+        System.out.println("----- TREE TESTING -----");
+        main.TreeTesting.SimpleTreeTesting();
 
         // flushing to avoid IDEA messing up
         System.out.flush();

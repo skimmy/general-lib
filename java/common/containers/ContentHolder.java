@@ -14,4 +14,11 @@ public interface ContentHolder<T> {
      * @return the content
      */
     public T getContent();
+
+    /**
+     * Set a new value for the content
+     *
+     * @param content the new content to be set
+     */
+    public void setContent(T content);
 }

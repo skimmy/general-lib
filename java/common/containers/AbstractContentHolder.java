@@ -1,7 +1,12 @@
 package common.containers;
 
 /**
- * Created by skimmy on 9/28/14.
+ * Abstract class implementing the basics operation for the {@link common.containers.ContentHolder}
+ * interface.
+ *
+ * Created by Michele Schimd on 9/28/14.
+ *
+ * @version 1.0
  */
 public abstract class AbstractContentHolder<T> implements ContentHolder<T> {
     protected T content;
@@ -13,6 +18,11 @@ public abstract class AbstractContentHolder<T> implements ContentHolder<T> {
     @Override
     public T getContent() {
         return this.content;
+    }
+
+    @Override
+    public void setContent(T content) {
+        this.content = content;
     }
 
     @Override
