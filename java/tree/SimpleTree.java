@@ -1,6 +1,5 @@
 package tree;
 
-import tree.adt.SimpleTreeNode;
 import tree.adt.Tree;
 import tree.adt.TreeNode;
 

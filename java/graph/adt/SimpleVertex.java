@@ -26,10 +26,12 @@ public class SimpleVertex<T> extends AbstractContentHolder<T> implements Vertex<
         return false;
     }
 
+    @Override
     public Object getAuxiliary() {
         return this.auxiliary;
     }
 
+    @Override
     public void clearAuxiliary() {
         this.auxiliary = null;
     }
